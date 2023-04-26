@@ -7,6 +7,7 @@ import Home from "../pages/Home/Home";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import User from "../pages/User";
+import MovieDetail from "../pages/MovieDetail";
 
 const Router = () => {
   const elements = useRoutes([
@@ -15,7 +16,7 @@ const Router = () => {
       element: <MainLayout />,
       children: [
         {
-          path: "home",
+          path: "/",
           element: <Home />,
         },
         {
@@ -29,6 +30,10 @@ const Router = () => {
         {
           path: 'user',
           element: <User/>
+        },
+        {
+          path: 'detail/:id',
+          element: <MovieDetail/>
         }
       ],
     },
