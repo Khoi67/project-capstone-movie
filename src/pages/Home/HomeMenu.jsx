@@ -27,14 +27,14 @@ const HomeMenu = () => {
     return movieDate?.map((heThongRap, index) => {
       return (
         <TabPane
-          tab={<img src={heThongRap.logo} className="rounded-full" width="50" />}
+          tab={<img src={heThongRap.logo} className="rounded-full" width="50" alt="" />}
           key={index}
         >
             <Tabs tabPosition={tabPosition}>
                 {heThongRap.lstCumRap?.map((cumRap, index) => {
                     return <TabPane tab={
                         <div style={{width: '300px', display: 'flex'}}>
-                        <img src={cumRap.hinhAnh} width="50"/>
+                        <img src={cumRap.hinhAnh} width="50" alt=""/>
                         <div className="text-left ml-2"> 
                             {cumRap.tenCumRap}
                             <p className="text-red-200">Chi tiết</p>

@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getBannerList, getMenuLogo, getMovieDate, getmovieList } from './thunkAction'
+import {
+  getBannerList,
+  getMenuLogo,
+  getMovieDate,
+  getMovieDetail,
+  getmovieList,
+} from "./thunkAction";
 
 const initialState = {
   movieList: [],
@@ -7,7 +13,8 @@ const initialState = {
   error: undefined,
   bannerList: [],
   menuLogo: [],
-  movieDate: []
+  movieDate: [],
+  movieDetail: {},
 };
 
 export const { reducer: quanLyPhimReducer, actions: quanLyPhimActions } =
@@ -19,17 +26,17 @@ export const { reducer: quanLyPhimReducer, actions: quanLyPhimActions } =
       //Xử lý các actions tạo từ createAsyncThunk
 
       builder
-      .addCase(getmovieList.pending, (state, action) => {
-        state.isLoading = true
-      })
-      .addCase(getmovieList.fulfilled, (state, action) => {
-        state.movieList = action.payload
-        state.isLoading = false
-      })
-      .addCase(getmovieList.rejected, (state, action) => {
-        state.isLoading = false
-        state.error = action.payload
-      })
+        .addCase(getmovieList.pending, (state, action) => {
+          state.isLoading = true;
+        })
+        .addCase(getmovieList.fulfilled, (state, action) => {
+          state.movieList = action.payload;
+          state.isLoading = false;
+        })
+        .addCase(getmovieList.rejected, (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload;
+        });
     },
   });
 
@@ -40,34 +47,51 @@ export const { reducer: quanLyBannerReducer, actions: quanLyBannerAction } =
     reducers: {},
     extraReducers: (builder) => {
       //Xử lý các actions tạo từ createAsyncThunk
-      builder.addCase(getBannerList.fulfilled, (state, action) =>{
-        state.bannerList = action.payload
-      })
+      builder.addCase(getBannerList.fulfilled, (state, action) => {
+        state.bannerList = action.payload;
+      });
     },
   });
 
-  export const { reducer: quanLyMenuLogoReducer, actions: quanLyMenuLogoAction } =
+export const { reducer: quanLyMenuLogoReducer, actions: quanLyMenuLogoAction } =
   createSlice({
     name: "quanLyMenuLogo",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
       //Xử lý các actions tạo từ createAsyncThunk
-      builder.addCase(getMenuLogo.fulfilled, (state, action) =>{
-        state.menuLogo = action.payload
-      })
+      builder.addCase(getMenuLogo.fulfilled, (state, action) => {
+        state.menuLogo = action.payload;
+      });
     },
   });
 
-  export const { reducer: quanLyMovieDateReducer, actions: quanLyMovieDateAction } =
-  createSlice({
-    name: "quanLyMovieDate",
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-      //Xử lý các actions tạo từ createAsyncThunk
-      builder.addCase(getMovieDate.fulfilled, (state, action) =>{
-        state.movieDate = action.payload
-      })
-    },
-  });
+export const {
+  reducer: quanLyMovieDateReducer,
+  actions: quanLyMovieDateAction,
+} = createSlice({
+  name: "quanLyMovieDate",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    //Xử lý các actions tạo từ createAsyncThunk
+    builder.addCase(getMovieDate.fulfilled, (state, action) => {
+      state.movieDate = action.payload;
+    });
+  },
+});
+
+export const {
+  reducer: quanLyMovieDetailReducer,
+  actions: quanLyMovieDetailAction,
+} = createSlice({
+  name: "quanLyMovieDetail",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    //Xử lý các actions tạo từ createAsyncThunk
+    builder.addCase(getMovieDetail.fulfilled, (state, action) => {
+      state.movieDetail = action.payload;
+    });
+  },
+});

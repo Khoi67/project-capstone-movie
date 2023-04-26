@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <nav className=" bg-black bg-opacity-40 text-white fixed w-full z-10">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 ">
-        <NavLink to="/home" className="flex items-center">
+        <NavLink to="/" className="flex items-center">
           <img
             src="https://cybersoft.edu.vn/wp-content/uploads/2021/03/logo-cyber-nav.svg"
             className="h-10"
@@ -22,7 +22,7 @@ const Header = () => {
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
             <li>
               <NavLink
-              to="/home"
+              to="/"
                 href="#"
                 className="block py-2 pl-3 pr-4  rounded md:bg-transparent md:p-0 hover:text-blue-500"
                 aria-current="page"
@@ -32,7 +32,7 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="#"
+                href
                 className="block py-2 pl-3 pr-4  rounded md:bg-transparent md:p-0 hover:text-blue-500"
               >
                 About
@@ -40,7 +40,7 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="#"
+                href
                 className="block py-2 pl-3 pr-4  rounded md:bg-transparent md:p-0 hover:text-blue-500"
               >
                 Services
@@ -48,7 +48,7 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="#"
+                href
                 className="block py-2 pl-3 pr-4  rounded md:bg-transparent md:p-0 hover:text-blue-500"
               >
                 Pricing

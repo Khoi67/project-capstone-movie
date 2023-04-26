@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { quanLyBannerReducer, quanLyMenuLogo, quanLyMenuLogoReducer, quanLyMovieDateReducer, quanLyPhimReducer } from './quanLyPhim/slice'
+import { quanLyBannerReducer, quanLyMenuLogo, quanLyMenuLogoReducer, quanLyMovieDateReducer, quanLyMovieDetailReducer, quanLyPhimReducer } from './quanLyPhim/slice'
 import { quanLyNguoiDungActions, quanLyNguoiDungReducer } from './quanLyNguoiDung/slice'
 
 export const store = configureStore({
@@ -9,7 +9,7 @@ export const store = configureStore({
         quanLyBanner: quanLyBannerReducer,
         quanLyMenuLogo: quanLyMenuLogoReducer,
         quanLyMovieDate: quanLyMovieDateReducer,
-        
+        quanLyMovieDetail: quanLyMovieDetailReducer,
     },
 })
 
