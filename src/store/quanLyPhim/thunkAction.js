@@ -10,7 +10,7 @@ export const getmovieList = createAsyncThunk(
       // console.log("res", res);
       return res.data.content;
     } catch (error) {
-      return rejectWithValue(error)
+      return rejectWithValue(error);
     }
   }
 );
@@ -24,7 +24,7 @@ export const getBannerList = createAsyncThunk(
       // console.log("res", resBanner.data.content);
       return resBanner.data.content;
     } catch (error) {
-      return rejectWithValue(error)
+      return rejectWithValue(error);
     }
   }
 );
@@ -38,7 +38,7 @@ export const getMenuLogo = createAsyncThunk(
       // console.log("res", resMenuLogo.data.content);
       return resMenuLogo.data.content;
     } catch (error) {
-      return rejectWithValue(error)
+      return rejectWithValue(error);
     }
   }
 );
@@ -47,12 +47,30 @@ export const getMovieDate = createAsyncThunk(
   "quanLyMovieDate/getmoviedate",
   async (payload, { rejectWithValue }) => {
     try {
-      const getMovieDate = await quanLyPhimServices.getMovieDate("?maNhom=GP01");
+      const getMovieDate = await quanLyPhimServices.getMovieDate(
+        "?maNhom=GP01"
+      );
 
       // console.log("res", getMovieDate.data.content);
       return getMovieDate.data.content;
     } catch (error) {
-      return rejectWithValue(error)
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const getMovieDetail = createAsyncThunk(
+  "quanLyMovieDetail/getmoviedetail",
+  async (id, { rejectWithValue }) => {
+    try {
+      const getMovieDetail = await quanLyPhimServices.getMovieDetail(
+        `?MaPhim=${id}`
+      );
+
+      // console.log("res", getMovieDate.data.content);
+      return getMovieDetail.data.content;
+    } catch (error) {
+      return rejectWithValue(error);
     }
   }
 );
