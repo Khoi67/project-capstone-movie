@@ -26,7 +26,7 @@ const Login = () => {
   const { user } = useSelector((state) => state.quanLyNguoiDung);
   console.log(user);
   if (user) {
-    return <Navigate to={"/home"} />;
+    return <Navigate to={"/"} />;
   }
   return (
     <div className="max-w-screen-xl mx-auto p-4">

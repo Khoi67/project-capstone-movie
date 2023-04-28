@@ -20,7 +20,7 @@ const MovieDetail = () => {
       <CustomCard
         style={{ paddingTop: "150px", minHeight: "100vh" }}
         effectColor="#C780FF" // required
-        color="#000" // default color is white
+        color="#fff" // default color is white
         blur={10} // default blur value is 10px
         borderRadius={0} // default border radius value is 10px
       >
@@ -66,8 +66,12 @@ const MovieDetail = () => {
                           </div>
                         </div>
                         <div className="grid grid-cols-4">
-                          {c.lichChieuPhim.map((l) => (
-                            <NavLink className="text-2xl font-bold">
+                          {c.lichChieuPhim.map((l, i) => (
+                            <NavLink
+                              key={i}
+                              to={`/checkout/${l.maLichChieu}`}
+                              className="text-2xl font-bold"
+                            >
                               {moment(l.ngayChieuGioChieu).format("hh:mm A")}
                             </NavLink>
                           ))}

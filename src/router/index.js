@@ -8,6 +8,7 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import User from "../pages/User";
 import MovieDetail from "../pages/MovieDetail";
+import Checkout from "../pages/Checkout/Checkout";
 
 const Router = () => {
   const elements = useRoutes([
@@ -28,13 +29,17 @@ const Router = () => {
           element: <About />,
         },
         {
-          path: 'user',
-          element: <User/>
+          path: "user",
+          element: <User />,
         },
         {
-          path: 'detail/:id',
-          element: <MovieDetail/>
-        }
+          path: "detail/:id",
+          element: <MovieDetail />,
+        },
+        {
+          path: "checkout/:id",
+          element: <Checkout />,
+        },
       ],
     },
     {

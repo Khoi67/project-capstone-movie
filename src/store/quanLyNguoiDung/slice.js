@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { login } from './thunkAction';
+import { USER_LOGIN } from '../../constant/api';
 
 const initialState = {
     user: undefined,
@@ -10,11 +11,11 @@ export const { reducer: quanLyNguoiDungReducer, actions: quanLyNguoiDungActions 
     initialState,
     reducers: {
         logOut: (state, action) => {
-            localStorage.removeItem('user')
+            localStorage.removeItem(USER_LOGIN)
             state.user = undefined
         },
         getUser: (state, action) => {
-            const data = localStorage.getItem('user')
+            const data = localStorage.getItem(USER_LOGIN)
             if(data){
                 state.user = JSON.parse(data)
             }
@@ -25,7 +26,7 @@ export const { reducer: quanLyNguoiDungReducer, actions: quanLyNguoiDungActions 
         .addCase(login.fulfilled, (state, action) => {
 
             state.user = action.payload
-            localStorage.setItem('user', JSON.stringify(action.payload))
+            localStorage.setItem(USER_LOGIN, JSON.stringify(action.payload))
         })
     },
 })
