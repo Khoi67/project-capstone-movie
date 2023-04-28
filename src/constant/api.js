@@ -8,12 +8,15 @@ const baseURL = "https://movienew.cybersoft.edu.vn/api/";
 
 const http = axios.create();
 
+export const GROUP_ID = "GP14"
+export const USER_LOGIN = "user"
+
 http.interceptors.request.use((config) => {
   return {
     ...config,
     headers: {
       TokenCyberSoft,
-      // Authorization: `Bearer ${JSON.parse(localStorage.getItem('user') || '')?.accessToken}`
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem('user'))?.accessToken}`
     },
     baseURL,
   };

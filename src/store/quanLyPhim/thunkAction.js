@@ -1,11 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { quanLyPhimServices } from "../../services/quanLyPhim.services";
+import { GROUP_ID } from "../../constant/api";
 
 export const getmovieList = createAsyncThunk(
   "quanLyPhim/getmovielist",
   async (payload, { rejectWithValue }) => {
     try {
-      const res = await quanLyPhimServices.getMovieList("?maNhom=GP14");
+      const res = await quanLyPhimServices.getMovieList(`?maNhom=${GROUP_ID}`);
 
       // console.log("res", res);
       return res.data.content;
@@ -48,7 +49,7 @@ export const getMovieDate = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const getMovieDate = await quanLyPhimServices.getMovieDate(
-        "?maNhom=GP01"
+        `?maNhom=${GROUP_ID}`
       );
 
       // console.log("res", getMovieDate.data.content);
