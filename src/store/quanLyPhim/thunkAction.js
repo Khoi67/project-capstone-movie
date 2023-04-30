@@ -6,10 +6,16 @@ export const getmovieList = createAsyncThunk(
   "quanLyPhim/getmovielist",
   async (payload, { rejectWithValue }) => {
     try {
+      if (payload) {
+        const res = await quanLyPhimServices.getMovieList(
+          `?maNhom=${GROUP_ID}&tenPhim=${payload}`
+        );
+        return res.data.content;
+      }
       const res = await quanLyPhimServices.getMovieList(`?maNhom=${GROUP_ID}`);
+      return res.data.content;
 
       // console.log("res", res);
-      return res.data.content;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -70,6 +76,22 @@ export const getMovieDetail = createAsyncThunk(
 
       // console.log("res", getMovieDate.data.content);
       return getMovieDetail.data.content;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const layThongTinPhim = createAsyncThunk(
+  "layThongTinPhim/laythongtinphim",
+  async (id, { rejectWithValue }) => {
+    try {
+      const layThongTinPhim = await quanLyPhimServices.layThongTinPhim(
+        `?MaPhim=${id}`
+      );
+
+      // console.log("res", getMovieDate.data.content);
+      return layThongTinPhim.data.content;
     } catch (error) {
       return rejectWithValue(error);
     }

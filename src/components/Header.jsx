@@ -4,8 +4,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { quanLyNguoiDungActions } from "../store/quanLyNguoiDung/slice";
 
 const Header = () => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user } = useSelector((state) => state.quanLyNguoiDung);
 
   return (
@@ -22,7 +22,7 @@ const Header = () => {
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
             <li>
               <NavLink
-              to="/"
+                to="/"
                 href="#"
                 className="block py-2 pl-3 pr-4  rounded md:bg-transparent md:p-0 hover:text-blue-500"
                 aria-current="page"
@@ -58,16 +58,39 @@ const Header = () => {
               <li className="hover:text-blue-500">
                 <NavLink to="/login">Register/Login</NavLink>
               </li>
-            )}{
-              user && <div className="flex gap-1">
-              <p onClick={()=>{
-                navigate('/user')
-              }} className="cursor-pointer">Hello, {user.taiKhoan} </p>
-              <button className="p-[8px] border border-[#000] rounded-lg hover:bg-slate-400 hover transition-all duration-300 relative top-[-10px]" onClick={()=>{
-                dispatch(quanLyNguoiDungActions.logOut())
-              }}>Log out</button>
-            </div>
-            }
+            )}
+            {user && (
+              <div className="flex gap-1">
+                {user.maLoaiNguoiDung === "QuanTri" ? (
+                  <p
+                    onClick={() => {
+                      navigate("/admin");
+                    }}
+                    className="cursor-pointer"
+                  >
+                    Admin{" "}
+                  </p>
+                ) : (
+                  <p
+                    onClick={() => {
+                      navigate("/user");
+                    }}
+                    className="cursor-pointer"
+                  >
+                    Hello, {user?.taiKhoan}{" "}
+                  </p>
+                )}
+                <button
+                  className="p-[8px] border border-[#000] rounded-lg hover:bg-slate-400 hover transition-all duration-300 relative top-[-10px]"
+                  onClick={() => {
+                    dispatch(quanLyNguoiDungActions.logOut());
+                    navigate("/");
+                  }}
+                >
+                  Log out
+                </button>
+              </div>
+            )}
           </ul>
         </div>
       </div>

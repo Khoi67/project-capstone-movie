@@ -24,6 +24,9 @@ export const { reducer: quanLyDatVeReducer, actions: quanLyDatVeAction } =
         }
         state.bookingChairList = updateChairList;
       },
+      datVeHoanTat: (state, action) => {
+        state.bookingChairList = [];
+      }
     },
     extraReducers: (builder) => {
       builder

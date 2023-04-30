@@ -5,6 +5,7 @@ import {
   getMovieDate,
   getMovieDetail,
   getmovieList,
+  layThongTinPhim,
 } from "./thunkAction";
 
 const initialState = {
@@ -15,6 +16,8 @@ const initialState = {
   menuLogo: [],
   movieDate: [],
   movieDetail: {},
+  movie: {},
+  movieSearch: "",
 };
 
 export const { reducer: quanLyPhimReducer, actions: quanLyPhimActions } =
@@ -92,6 +95,21 @@ export const {
     //Xử lý các actions tạo từ createAsyncThunk
     builder.addCase(getMovieDetail.fulfilled, (state, action) => {
       state.movieDetail = action.payload;
+    });
+  },
+});
+
+export const {
+  reducer: layThongTinPhimReducer,
+  actions: layThongTinPhimAction,
+} = createSlice({
+  name: "layThongTinPhim",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    //Xử lý các actions tạo từ createAsyncThunk
+    builder.addCase(layThongTinPhim.fulfilled, (state, action) => {
+      state.movie = action.payload;
     });
   },
 });

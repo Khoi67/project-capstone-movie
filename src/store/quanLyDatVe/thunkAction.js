@@ -20,7 +20,7 @@ export const bookingTicket = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const res = await quanLyDatVeService.bookingTicket(payload);
-      return res.data?.content;
+      console.log(res.data.content);
     } catch (error) {
       return rejectWithValue(error);
     }
