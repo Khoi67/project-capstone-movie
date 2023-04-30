@@ -16,7 +16,7 @@ http.interceptors.request.use((config) => {
     ...config,
     headers: {
       TokenCyberSoft,
-      Authorization: `Bearer ${JSON.parse(localStorage.getItem('user'))?.accessToken}`
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem('user'))?.accessToken}`,
     },
     baseURL,
   };
@@ -34,6 +34,9 @@ http.interceptors.response.use(
       toast.error(error.response?.data?.content);
     } 
     if (error?.response?.status === 404) {
+      toast.error(error.response?.data?.content);
+    } 
+    if (error?.response?.status === 500) {
       toast.error(error.response?.data?.content);
     } 
     else {

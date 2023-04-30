@@ -24,7 +24,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   const { user } = useSelector((state) => state.quanLyNguoiDung);
-  console.log(user);
   if (user) {
     return <Navigate to={"/"} />;
   }
@@ -33,10 +32,10 @@ const Login = () => {
       <h2 className="text-center text-2xl">Login</h2>
       <form
         className="mt-6"
-        onSubmit={handleSubmit(async (value) => {
+        onSubmit={handleSubmit(async (value) => 
           //   console.log({ value });
-          dispatch(login(value));
-        })}
+          dispatch(login(value))
+        )}
       >
         <div className="grid gap-6 mb-6">
           <div>
