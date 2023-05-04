@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect } from "react";
-import { CustomCard } from "@tsamantanis/react-glassmorphism";
 import "../assets/styles/circle.css";
 import { Rate, Tabs } from "antd";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,74 +16,66 @@ const MovieDetail = () => {
   }, [dispatch, params]);
   return (
     <div className="bg-[url(https://picsum.photos/1000)] min-h-screen bg-cover bg-center">
-      <CustomCard
-        style={{ paddingTop: "150px", minHeight: "100vh" }}
-        effectColor="#C780FF" // required
-        color="#fff" // default color is white
-        blur={10} // default blur value is 10px
-        borderRadius={0} // default border radius value is 10px
-      >
-        <div className="flex justify-center items-center space-x-8">
-          <img src={movieDetail.hinhAnh} className="w-60" alt="" />
-          <div className="w-[500px]">
-            <p>{movieDetail.ngayKhoiChieu}</p>
-            <p className="text-4xl font-bold">{movieDetail.tenPhim}</p>
-            <p>{movieDetail.moTa}</p>
+      <div className="flex justify-center items-center space-x-8">
+        <img src={movieDetail.hinhAnh} className="w-60" alt="" />
+        <div className="w-[500px]">
+          <p>{movieDetail.ngayKhoiChieu}</p>
+          <p className="text-4xl font-bold">{movieDetail.tenPhim}</p>
+          <p>{movieDetail.moTa}</p>
+        </div>
+        <div>
+          <p className="text-2xl ml-4 font-semibold">Đánh giá</p>
+          <div className="text-2xl">
+            <Rate allowHalf defaultValue={movieDetail.danhGia} />
           </div>
-          <div>
-            <p className="text-2xl ml-4 font-semibold">Đánh giá</p>
-            <div className="text-2xl">
-              <Rate allowHalf defaultValue={movieDetail.danhGia} />
-            </div>
-            {/* <div className={`c100 p${movieDetail.danhGia * 10}`}>
+          {/* <div className={`c100 p${movieDetail.danhGia * 10}`}>
               <span>{movieDetail.danhGia * 10}%</span>
               <div className="slice">
                 <div className="bar" />
                 <div className="fill" />
               </div>
             </div> */}
-          </div>
         </div>
-        <div className="mt-5 container mx-auto">
-          <Tabs
-            className="bg-white"
-            defaultActiveKey="1"
-            tabPosition="left"
-            items={movieDetail.heThongRapChieu?.map((item, i) => {
-              return {
-                label: <img src={item?.logo} width={50} height={50} alt="" />,
-                key: i,
-                children: (
-                  <div>
-                    {item?.cumRapChieu.map((c, index) => (
-                      <Fragment key={index}>
-                        <div className="flex items-center gap-4">
-                          <img src={c.hinhAnh} width={50} height={50} alt="" />
-                          <div className="flex flex-col">
-                            <p className="font-bold text-2xl">{c.tenCumRap}</p>
-                            <p>{c.tenCumRap}</p>
-                          </div>
+      </div>
+      <div className="mt-5 container mx-auto">
+        <Tabs
+          className="bg-white"
+          defaultActiveKey="1"
+          tabPosition="left"
+          items={movieDetail.heThongRapChieu?.map((item, i) => {
+            return {
+              label: <img src={item?.logo} width={50} height={50} alt="" />,
+              key: i,
+              children: (
+                <div>
+                  {item?.cumRapChieu.map((c, index) => (
+                    <Fragment key={index}>
+                      <div className="flex items-center gap-4">
+                        <img src={c.hinhAnh} width={50} height={50} alt="" />
+                        <div className="flex flex-col">
+                          <p className="font-bold text-2xl">{c.tenCumRap}</p>
+                          <p>{c.tenCumRap}</p>
                         </div>
-                        <div className="grid grid-cols-4">
-                          {c.lichChieuPhim.map((l, i) => (
-                            <NavLink
-                              key={i}
-                              to={`/checkout/${l.maLichChieu}`}
-                              className="text-2xl font-bold"
-                            >
-                              {moment(l.ngayChieuGioChieu).format("hh:mm A")}
-                            </NavLink>
-                          ))}
-                        </div>
-                      </Fragment>
-                    ))}
-                  </div>
-                ),
-              };
-            })}
-          />
-        </div>
-      </CustomCard>
+                      </div>
+                      <div className="grid grid-cols-4">
+                        {c.lichChieuPhim.map((l, i) => (
+                          <NavLink
+                            key={i}
+                            to={`/checkout/${l.maLichChieu}`}
+                            className="text-2xl font-bold"
+                          >
+                            {moment(l.ngayChieuGioChieu).format("hh:mm A")}
+                          </NavLink>
+                        ))}
+                      </div>
+                    </Fragment>
+                  ))}
+                </div>
+              ),
+            };
+          })}
+        />
+      </div>
     </div>
   );
 };
